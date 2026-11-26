@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-"""Count failed SSH logins per IP from a Linux auth log and flag likely brute force.
-
-Usage: python3 analyze_auth.py sample_auth.log [threshold]
-"""
+# counts failed ssh logins per ip from an auth log, flags possible brute force
+# usage: python3 analyze_auth.py sample_auth.log [threshold]
 import re
 import sys
 from collections import Counter
