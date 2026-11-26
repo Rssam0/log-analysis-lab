@@ -1,20 +1,17 @@
 # Log analysis lab
 
-A small Python script that reads a Linux `auth.log` and counts failed SSH logins per IP address. It flags IPs above a threshold as possible brute force attempts.
+A small python script that reads a linux `auth.log` and counts failed SSH logins per IP. Over the threshold, it flags the IP as possible brute force.
 
-The sample log is made up (documentation IP ranges), so no real data is involved.
+The sample log is made up (documentation IP ranges), nothing real in it.
 
-## Run
+Run it:
 ```
 python3 analyze_auth.py sample_auth.log 5
 ```
 
-## What I learned
-- SOC analysts spend a lot of time reading logs, so being able to count and group events matters.
-- Repeated failures from one IP against "admin" or "root" is a classic brute-force pattern.
-- Limits: this only looks at one log format and one pattern. A real tool would also check for a successful login after many failures, and watch for slow attacks.
+What I got out of it:
+- most of log work is just counting and grouping
+- lots of failures from one IP against admin or root is the classic brute force shape
+- this only reads one log format. a real tool would also catch "many failures then one success" and slow attacks that spread over days
 
-## Next steps
-- Add detection of "many failures then a success"
-- Output a CSV
-- Try the same idea on Windows event logs (event ID 4625 = failed logon)
+Update: I made a Windows version of the same idea for event 4625, it's in the windows-4625-logon-parser repo.
